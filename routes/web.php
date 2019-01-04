@@ -21,4 +21,5 @@ $router->get('/key', function() {
 
 //Restful Api
 $router->get('/index', 'Api\TestController@index');
+$router->get('/get', 'Api\TestController@get');
 $router->post('/post', 'Api\TestController@post');

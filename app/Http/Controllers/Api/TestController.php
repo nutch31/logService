@@ -10,13 +10,20 @@ class TestController extends BaseController
     {
         return 'Index';
     }
+    
+    public function get()
+    {
+        $test = Test::all();
+
+        return $test;
+    }
 
     public function post()
     {
-        $test = new Test;
-        $test->name = 'Test';
-        $test->save();
+        $user = new Test;
+        $user->name = 'John';
+        $user->save();
 
-        return $test;
+        return $user;
     }
 }
