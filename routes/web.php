@@ -20,6 +20,14 @@ $router->get('/key', function() {
 });
 
 //Restful Api
-$router->get('/index', 'Api\TestController@index');
-$router->get('/get', 'Api\TestController@get');
-$router->post('/post', 'Api\TestController@post');
+$router->group(['middleware' => 'checkSecretKey'], function() use ($router)
+{
+    //TEST
+    $router->get('/index', 'Api\TestController@index');
+    $router->get('/get', 'Api\TestController@get');
+    $router->post('/post', 'Api\TestController@post');
+
+    //LogIn LogOut
+    $router->get('/logService/getLogInLogOut', 'Api\LogInLogOutController@getLogInLogOut');
+    $router->post('/logService/postLogInLogOut', 'Api\LogInLogOutController@postLogInLogOut');
+});

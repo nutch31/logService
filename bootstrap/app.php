@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 $app->register(Jenssegers\Mongodb\MongodbServiceProvider::class);
 
@@ -65,9 +65,10 @@ $app->singleton(
 //    App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
+ $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+        'checkSecretKey' => App\Http\Middleware\checkSecretKey::class,
+ ]);
 
 /*
 |--------------------------------------------------------------------------
